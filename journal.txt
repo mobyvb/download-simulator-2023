@@ -1,0 +1,85 @@
+Sat Feb 11 10:39:40 AM EST 2023
+> I modified a script I had for doing pomodoros to create a "journal" lolSat Feb 11 10:39:50 AM EST 2023
+> to make it easier to track my thoughts as I work on this projectSat Feb 11 10:40:12 AM EST 2023
+> that way if I make a blog post later, it'll be easier to figure out what was going on in my headSat Feb 11 10:40:20 AM EST 2023
+> anyways, welcome!Sat Feb 11 10:41:21 AM EST 2023
+> in this project, I want to remake one of the first games I ever madeSat Feb 11 10:41:28 AM EST 2023
+> Download Simulator 2013 - https://mobyvb.com/ludum-dare-27/Sat Feb 11 10:41:38 AM EST 2023
+> I made this for a game competition called the Ludum DareSat Feb 11 10:43:19 AM EST 2023
+> testing
+Sat Feb 11 10:43:27 AM EST 2023
+> asfd
+date> testing
+Sat Feb 11 10:46:29 AM EST 2023> test
+Sat Feb 11 10:46:44 AM EST 2023> haha, that's what I wanted!
+Sat Feb 11 10:47:05 AM EST 2023> probably should have tested it before beginning..
+Sat Feb 11 10:49:42 AM EST 2023> anyways, this was for ludum dare 27.
+Sat Feb 11 10:50:01 AM EST 2023> unfortunately, I don't think the old submissions from that are still up
+Sat Feb 11 10:50:06 AM EST 2023> but you can play the game still
+Sat Feb 11 10:50:19 AM EST 2023> anyways, the theme of the competition after the voting period was "10 seconds"
+Sat Feb 11 10:50:27 AM EST 2023> there were some really creative interpretations of this
+Sat Feb 11 10:50:41 AM EST 2023> for example, there was one game that was like a sprinting race with 11 people
+Sat Feb 11 10:50:47 AM EST 2023> and the first person was really fast
+Sat Feb 11 10:51:10 AM EST 2023> the game was to control the speeds of the remaining 10 players such that they all finish at the same time - "10 seconds"
+Sat Feb 11 10:51:11 AM EST 2023> lol
+Sat Feb 11 10:51:55 AM EST 2023> anyway, I created "download simulator 2013"
+Sat Feb 11 10:52:02 AM EST 2023> I just noticed it's been 10 years since 2013
+Sat Feb 11 10:52:03 AM EST 2023> crazy
+Sat Feb 11 10:52:20 AM EST 2023> I wasn't thinking about that, but I suppose it *is* and opportune time to recreate it
+Sat Feb 11 10:52:39 AM EST 2023> anyways, I took a more obvious interpretation of the theme. Each of my levels is over in 10 seconds
+Sat Feb 11 10:53:48 AM EST 2023> it is heavily inspired by Super Meat Boy. It's 2d platformer where you play a small red square. Jump duration is determined by how long you hold the jump key. Wall jumping is a thing. Friction is low and it requires twitch reflexes and developing muscle memory from losing a bunch
+Sat Feb 11 10:54:04 AM EST 2023> I received both praise and criticism during judging for the difficulty
+Sat Feb 11 10:54:24 AM EST 2023> I really like games like SMB, but they're definitely not for everyone
+Sat Feb 11 10:55:18 AM EST 2023> speaking of which, I saw this video essay recently about "How Speedrunners Conquered The World's Hardest Game" - https://www.youtube.com/watch?v=sU851gBd7WQ
+Sat Feb 11 10:55:20 AM EST 2023> super interesting
+Sat Feb 11 10:55:36 AM EST 2023> and surprisingly engaging. I remember playing this game on the computer in middle school
+Sat Feb 11 10:56:09 AM EST 2023> so I'm gonna remake it. I have a bunch of things I want to learn and this is an easy, fun project to try and do that with
+Sat Feb 11 10:57:13 AM EST 2023> oh yeah, by the way, it's called 'download simulator' because there is a green bar that moves from the left to right side of the level, which is shaped/sized roughly like a download bar. You cannot allow the "completed" portion of the download bar to touch you, forcing you to get to the goal at the right side of the level before the "download" completes
+Sat Feb 11 10:57:26 AM EST 2023> the level names are fake file names
+Sat Feb 11 10:57:30 AM EST 2023> intended to sound sketchy
+Sat Feb 11 10:57:48 AM EST 2023> for v2, I want the easier levels to have normal sounding file names
+Sat Feb 11 10:57:55 AM EST 2023> the sketchiness of the filename will increase with level difficulty
+Sat Feb 11 10:59:02 AM EST 2023> okay, here are some thoughts about what else I want from v2, from notes I took in my notebook last night
+Sat Feb 11 10:59:05 AM EST 2023> it's a new notebook
+Sat Feb 11 10:59:44 AM EST 2023> it was like $10 for 100 pages. It has "Tomoe River Paper" which is supposedly really good for fountain pens. I like it so far. It dries quick and there is no feathering or bleeding
+Sat Feb 11 10:59:50 AM EST 2023> which is incredible, considering how thin the paper is
+Sat Feb 11 11:00:12 AM EST 2023> it's actually completely blank. No lines. At first I thought that would be a problem, since I intended to use it for writing
+Sat Feb 11 11:00:35 AM EST 2023> then, I realized that because the paper is so ridiculously thin, you can put a piece of lined paper behind the page you're on, and see the lines quite clearly
+Sat Feb 11 11:00:52 AM EST 2023> so although the page itself is blank, it is still possible to write neatly!
+Sat Feb 11 11:00:59 AM EST 2023> ok anyways, here's what I wrote last night:
+Sat Feb 11 11:01:07 AM EST 2023> I want to write it in Go
+Sat Feb 11 11:01:18 AM EST 2023> probably in a way that can be compiled to webassembly and run in a browser
+Sat Feb 11 11:01:58 AM EST 2023> but I like Go and I want to use it to make a game. Most of my games to this point have been in a loosely typed language like JS or Python. I want to be intentional and deliberate about how I build this version out, so that it is modular and reusable for other purposes
+Sat Feb 11 11:02:29 AM EST 2023> I want to time levels, and have at least a localstorage to track a player's high score for each level (and perhaps a score history)
+Sat Feb 11 11:03:48 AM EST 2023> I want replays. Super meat boy had this really cool thing - after a level is completed successfully, all your attempts were replayed at the same time which had a really cool effect. As time in the replay goes on, more and more of your attempts "die" until there is just the single attempt that succeeded
+Sat Feb 11 11:04:01 AM EST 2023> I don't wanna do anything that complex at first. It is sufficient to replay a single attempt
+Sat Feb 11 11:04:07 AM EST 2023> that's not really an essential feature imo
+Sat Feb 11 11:04:09 AM EST 2023> but whatever
+Sat Feb 11 11:04:41 AM EST 2023> idk about music, but it would be a nice option. Even better if it is in some way affected by the level and player events
+Sat Feb 11 11:05:07 AM EST 2023> maybe the player could change color every time a new collision occurs. So you'd change color as you wall jumped or something
+Sat Feb 11 11:05:27 AM EST 2023> I want to add "game juice" - https://www.youtube.com/watch?v=Fy0aCDmgnxg
+Sat Feb 11 11:05:41 AM EST 2023> probably to start, jumping and landing/colliding should shake the level a little
+Sat Feb 11 11:05:59 AM EST 2023> altering the size of the plaer would be cool
+Sat Feb 11 11:06:02 AM EST 2023> slightly
+Sat Feb 11 11:06:13 AM EST 2023> (not changing the hitbox necessarily, just aesthetic)
+Sat Feb 11 11:07:23 AM EST 2023> maybe some "matrix-y" dots in the foreground and background slowly drifting to the right. No interaction with the level. Just some more details to contribute to the idea that you are "inside" a download
+Sat Feb 11 11:07:44 AM EST 2023> probably enemies will be necessary at some point to ramp up the difficulty/level of engagement
+Sat Feb 11 11:08:01 AM EST 2023> no restriction to 10 seconds in this version. Download bar behavior can be erratic
+Sat Feb 11 11:08:09 AM EST 2023> I will probably try to define different download bar movement types
+Sat Feb 11 11:08:39 AM EST 2023> e.g. linear, exponential, switch (low speed to high speed at a certain level progress - or high to low)
+Sat Feb 11 11:08:48 AM EST 2023> Some levels I would like to move
+Sat Feb 11 11:09:07 AM EST 2023> so both the platforms/player would be shifting left (shower than player speed)
+Sat Feb 11 11:09:15 AM EST 2023> but the download bar would also be moving left to right
+Sat Feb 11 11:09:23 AM EST 2023> once I have something basic I want to work on mobile usability
+Sat Feb 11 11:09:27 AM EST 2023> either in web or as an app
+Sat Feb 11 11:09:39 AM EST 2023> I want to make level design as easy as possible
+Sat Feb 11 11:10:03 AM EST 2023> ideally a web UI or pixel image where each pixel color represents a different type of entity in the level
+Sat Feb 11 11:10:18 AM EST 2023> this would generate level structure files which would be parsed by the game
+Sat Feb 11 11:10:36 AM EST 2023> I want to implement it with as little state as possible - using a functional style
+Sat Feb 11 11:14:25 AM EST 2023> I'm debating between using an existing game engine like https://github.com/hajimehoshi/ebiten or https://github.com/faiface/pixel or writing my own
+Sat Feb 11 11:14:44 AM EST 2023> in DS 2013, I basically wrote an engine from scratch
+Sat Feb 11 11:15:02 AM EST 2023> it was fun and educational, but engines written by others are probably nice too. I just haven't used them much
+Sat Feb 11 11:15:44 AM EST 2023> anyway, I'll see if these game engines can be used in the way I want to write this game
+Sat Feb 11 11:15:48 AM EST 2023> if so, I'll probably use them
+Sat Feb 11 11:15:54 AM EST 2023> otherwise, building from scratch would work
+Sat Feb 11 11:16:04 AM EST 2023> I'll take notes here as I go in case I ever want to track my progress
