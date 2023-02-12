@@ -83,3 +83,30 @@ Sat Feb 11 11:15:44 AM EST 2023> anyway, I'll see if these game engines can be u
 Sat Feb 11 11:15:48 AM EST 2023> if so, I'll probably use them
 Sat Feb 11 11:15:54 AM EST 2023> otherwise, building from scratch would work
 Sat Feb 11 11:16:04 AM EST 2023> I'll take notes here as I go in case I ever want to track my progress
+Sat Feb 11 03:37:48 PM EST 2023> I'm back
+Sat Feb 11 03:37:55 PM EST 2023> researching pixel library
+Sat Feb 11 03:38:49 PM EST 2023> can't figure out if it runs in the browser
+Sat Feb 11 03:38:51 PM EST 2023> but..
+Sat Feb 11 03:38:59 PM EST 2023> I still want to learn it
+Sat Feb 11 03:47:29 PM EST 2023> ok now I'm actually watching a talk about Gio. I would like to learn that too. If I can draw graphics the way I need to in it, I'd like to use it. But need to learn more first
+Sat Feb 11 03:48:18 PM EST 2023> whoa it has one of my coworkers in it https://www.youtube.com/watch?v=segijy6UcMI
+Sat Feb 11 03:49:59 PM EST 2023> test
+Sat Feb 11 03:50:17 PM EST 2023> I moved the journal to a new directory
+Sat Feb 11 03:50:41 PM EST 2023> Eventually I'll want it to write to a different file dependent on the date
+Sat Feb 11 04:00:54 PM EST 2023> now I'm cloning the "learn-gio" repository and checking out what it can do https://github.com/golangestonia/learn-gio/
+Sat Feb 11 04:13:44 PM EST 2023> lol I forgot that dependencies were a thing https://gioui.org/doc/install/linux
+Sat Feb 11 04:14:46 PM EST 2023> it's working! There's an animation example so I'm optimistica bout being able to do a game
+Sat Feb 11 04:14:53 PM EST 2023> with gio, that is
+Sat Feb 11 04:45:18 PM EST 2023> ok, I think I understand the basics at a high level
+Sat Feb 11 04:45:24 PM EST 2023> so the premise of this game is that you are inside a download
+Sat Feb 11 04:45:55 PM EST 2023> so just so I can get started with gio, I'll try to start mocking up a basic ui for downloading a list of files
+Sat Feb 11 05:02:09 PM EST 2023> I found a framecounter in the gio-example repository
+Sat Feb 11 05:02:19 PM EST 2023> that seems pretty darn close to a game loop to me
+Sat Feb 11 05:02:41 PM EST 2023> I need a nap...
+Sat Feb 11 05:02:45 PM EST 2023> probably gonna take a break for now
+Sat Feb 11 07:24:47 PM EST 2023> i'm back. nap was good.
+Sat Feb 11 08:08:53 PM EST 2023> I found a couple other gio examples I want to draw from
+Sat Feb 11 08:09:10 PM EST 2023> the best one is called "component" which has a bunch of examples of widgets I'd like to use
+Sat Feb 11 08:09:22 PM EST 2023> and features I probably don't need/won't use. But they're still cool!
+Sat Feb 11 08:52:02 PM EST 2023> I got an app bar lol
+Sat Feb 11 08:52:15 PM EST 2023> still not where I want it but I have to take a break
