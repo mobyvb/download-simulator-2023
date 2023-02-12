@@ -124,3 +124,10 @@ Sun Feb 12 05:05:56 PM EST 2023> ok a few final tweaks..
 Sun Feb 12 05:07:49 PM EST 2023> I used some graph paper to decide what I want the "aspect ratio" for a level to be. 3 by 12 seems good to represent a download bar
 Sun Feb 12 05:07:55 PM EST 2023> defining those as constants for now...
 Sun Feb 12 05:13:49 PM EST 2023> ok I think I figured that part out
+Sun Feb 12 05:17:43 PM EST 2023> now I want to make a watch script to iterate more quickly
+Sun Feb 12 05:21:34 PM EST 2023> test watch script
+Sun Feb 12 05:24:00 PM EST 2023> test
+Sun Feb 12 05:24:33 PM EST 2023> test
+Sun Feb 12 05:25:43 PM EST 2023> test
+Sun Feb 12 05:39:43 PM EST 2023> lol I totally just killed some important process on my computer by accident while writing the watch script
+Sun Feb 12 05:40:01 PM EST 2023> the screen went black and everything was closed. Like if I had just rebooted
