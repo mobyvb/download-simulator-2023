@@ -5,7 +5,6 @@ go 1.18
 require (
 	gioui.org v0.0.0-20230206180804-32c6a9b10d0b
 	gioui.org/x v0.0.0-20230201210254-e4e582af919b
-	github.com/fsnotify/fsnotify v1.6.0
 )
 
 require (
