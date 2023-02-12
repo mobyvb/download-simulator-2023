@@ -110,3 +110,4 @@ Sat Feb 11 08:09:10 PM EST 2023> the best one is called "component" which has a 
 Sat Feb 11 08:09:22 PM EST 2023> and features I probably don't need/won't use. But they're still cool!
 Sat Feb 11 08:52:02 PM EST 2023> I got an app bar lol
 Sat Feb 11 08:52:15 PM EST 2023> still not where I want it but I have to take a break
+Sat Feb 11 10:13:58 PM EST 2023> well I made a commit with the basic UI. I wanna start working on actual game logic soon
