@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"image"
 	"image/color"
 	"log"
 	"os"
@@ -11,21 +12,18 @@ import (
 	"gioui.org/io/system"
 	"gioui.org/layout"
 	"gioui.org/op"
+	"gioui.org/op/clip"
 	"gioui.org/op/paint"
 	"gioui.org/widget/material"
 	"gioui.org/x/component"
 )
 
-type (
-	C = layout.Context
-	D = layout.Dimensions
-)
-
 func main() {
 	flag.Parse()
+	ui := NewUI()
 	go func() {
 		w := app.NewWindow()
-		if err := loop(w); err != nil {
+		if err := ui.Run(w); err != nil {
 			log.Fatal(err)
 		}
 		os.Exit(0)
@@ -33,8 +31,23 @@ func main() {
 	app.Main()
 }
 
-func loop(w *app.Window) error {
+type UI struct {
+	Theme  *material.Theme
+	Modal  *component.ModalLayer
+	AppBar *component.AppBar
+}
+
+func NewUI() *UI {
 	th := material.NewTheme(gofont.Collection())
+	ui := &UI{}
+	ui.Theme = th
+	ui.Modal = component.NewModal()
+	ui.AppBar = component.NewAppBar(ui.Modal)
+	ui.AppBar.Title = "Download Simulator"
+	return ui
+}
+
+func (ui *UI) Run(w *app.Window) error {
 	var ops op.Ops
 
 	for {
@@ -45,59 +58,36 @@ func loop(w *app.Window) error {
 				return e.Err
 			case system.FrameEvent:
 				gtx := layout.NewContext(&ops, e)
-
-				// Configure a label styled to be a heading.
-				/*
-					title := material.Body1(th, "Download Simulator 2023")
-					title.Font.Weight = text.Bold
-					title.Alignment = text.Start
-					title.MaxLines = 1
-					title.Layout(gtx)
-				*/
-
-				red := color.NRGBA{R: 0xFF, A: 0xFF}
-				// ColorOp sets the brush for painting.
-				paint.ColorOp{Color: red}.Add(gtx.Ops)
-				// PaintOp paints the configured.
-				paint.PaintOp{}.Add(gtx.Ops)
-
-				modal := component.NewModal()
-				appbar := component.NewAppBar(modal)
-				appbar.Title = "Download Simulator 2023"
-				//bar.NavigationIcon, _ = widget.NewIcon(icons.ActionHome)
-				//bar.Layout(gtx, th, "Download S", "asdf")
-				/*
-					headingLabel := material.Body1(th, "")
-					headingLabel.Font.Weight = text.Bold
-					headingLabel.Alignment = text.Middle
-					headingLabel.MaxLines = 1
-					inset := layout.UniformInset(unit.Dp(6))
-				*/
-
-				bar := layout.Rigid(func(gtx layout.Context) layout.Dimensions {
-					return appbar.Layout(gtx, th, "asdf1", "adsf2")
-				})
-
-				/*
-					content := layout.Flexed(1, func(gtx layout.Context) layout.Dimensions {
-						borderWidth := float32(0.5)
-						borderColor := color.NRGBA{A: 107}
-						return widget.Border{
-							Color:        borderColor,
-							CornerRadius: unit.Dp(4),
-							Width:        unit.Dp(borderWidth),
-						}.Layout(gtx, func(gtx layout.Context) layout.Dimensions {
-							return layout.UniformInset(unit.Dp(4)).Layout(gtx,
-								widget.Text("adsfsf"))
-						})
-					})
-				*/
-
-				flex := layout.Flex{Axis: layout.Vertical}
-				flex.Layout(gtx, bar)
-
+				ui.Layout(gtx)
 				e.Frame(gtx.Ops)
 			}
 		}
 	}
+}
+
+func (ui *UI) Layout(gtx layout.Context) layout.Dimensions {
+	return layout.Flex{Axis: layout.Vertical, Alignment: layout.Middle}.Layout(gtx,
+		layout.Rigid(func(gtx layout.Context) layout.Dimensions {
+			return ui.AppBar.Layout(gtx, ui.Theme, "asdf1", "adsf2")
+		}),
+		layout.Flexed(1, ui.Canvas),
+	)
+}
+
+const canvasHeightRatio = 3
+const canvasWidthRatio = 12
+
+func (ui *UI) Canvas(gtx layout.Context) layout.Dimensions {
+	max := gtx.Constraints.Max
+	canvasWidth := max.X - 50
+	canvasHeight := canvasWidth / canvasWidthRatio * canvasHeightRatio
+	canvasBounds := image.Point{X: canvasWidth, Y: canvasHeight}
+	bounds := clip.Rect(image.Rectangle{Max: canvasBounds}).Push(gtx.Ops)
+	defer bounds.Pop()
+
+	red := color.NRGBA{R: 0xFF, A: 0xFF}
+	paint.ColorOp{Color: red}.Add(gtx.Ops)
+	paint.PaintOp{}.Add(gtx.Ops)
+
+	return layout.Dimensions{Size: canvasBounds}
 }

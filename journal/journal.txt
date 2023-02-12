@@ -111,3 +111,16 @@ Sat Feb 11 08:09:22 PM EST 2023> and features I probably don't need/won't use. B
 Sat Feb 11 08:52:02 PM EST 2023> I got an app bar lol
 Sat Feb 11 08:52:15 PM EST 2023> still not where I want it but I have to take a break
 Sat Feb 11 10:13:58 PM EST 2023> well I made a commit with the basic UI. I wanna start working on actual game logic soon
+Sun Feb 12 04:59:34 PM EST 2023> ok so my coworker helped me figure out some of the things I was struggling with yesterday
+Sun Feb 12 04:59:49 PM EST 2023> regarding combining painting on a canvas + gio
+Sun Feb 12 05:00:22 PM EST 2023> now I've figured out how to modify it to draw a specific size. I want to maintain a specific aspect ratio for the "download bar", but make it as wide as possible
+Sun Feb 12 05:00:33 PM EST 2023> I think that's how the 2013 version was
+Sun Feb 12 05:00:57 PM EST 2023> there was a separate coordinate system for the game logic, and this was scaled according to the max size allowed by the screen
+Sun Feb 12 05:01:20 PM EST 2023> I'm gonna play around a little bit more with the UI stuff but I really want to get to game logic soon
+Sun Feb 12 05:04:36 PM EST 2023> nice, I got the canvas to maintain a specific size, but be middle-aligned
+Sun Feb 12 05:05:03 PM EST 2023> I think I'm starting to understand how painting works. It's interesting - I rarely see Go libraries that function like this. I like it
+Sun Feb 12 05:05:42 PM EST 2023> actually, replace "rarely see" with "I don't think I've seen"
+Sun Feb 12 05:05:56 PM EST 2023> ok a few final tweaks..
+Sun Feb 12 05:07:49 PM EST 2023> I used some graph paper to decide what I want the "aspect ratio" for a level to be. 3 by 12 seems good to represent a download bar
+Sun Feb 12 05:07:55 PM EST 2023> defining those as constants for now...
+Sun Feb 12 05:13:49 PM EST 2023> ok I think I figured that part out
