@@ -49,6 +49,12 @@ func NewUI() *UI {
 	return ui
 }
 
+var (
+	started     bool
+	currentGame game.GameState
+	preTime     time.Time
+)
+
 func (ui *UI) Run(w *app.Window) error {
 	var ops op.Ops
 
@@ -58,6 +64,34 @@ func (ui *UI) Run(w *app.Window) error {
 			switch e := e.(type) {
 			case system.DestroyEvent:
 				return e.Err
+				/*
+					case key.Event:
+						fmt.Println("key event")
+						if started && e.State == key.Press {
+							switch e.Name {
+							case key.NameLeftArrow:
+								fmt.Println("left")
+							case key.NameUpArrow:
+								fmt.Println("up")
+							case key.NameRightArrow:
+								fmt.Println("right")
+							case key.NameDownArrow:
+								fmt.Println("down")
+							}
+						}
+						if started && e.State == key.Release {
+							switch e.Name {
+							case key.NameLeftArrow:
+								fmt.Println("left release")
+							case key.NameUpArrow:
+								fmt.Println("up release")
+							case key.NameRightArrow:
+								fmt.Println("right release")
+							case key.NameDownArrow:
+								fmt.Println("down release")
+							}
+						}
+				*/
 			case system.FrameEvent:
 				gtx := layout.NewContext(&ops, e)
 
@@ -83,21 +117,15 @@ func (ui *UI) Layout(gtx layout.Context) layout.Dimensions {
 const canvasHeightRatio = 3
 const canvasWidthRatio = 12
 
-var (
-	started     bool
-	currentGame game.GameState
-	prevTime    time.Time
-)
-
 func (ui *UI) Canvas(gtx layout.Context) layout.Dimensions {
 	if !started {
 		currentGame = game.NewGame()
-		prevTime = gtx.Now
+		preTime = gtx.Now
 		started = true
 	}
 	now := gtx.Now
-	dt := now.Sub(prevTime)
-	prevTime = now
+	dt := now.Sub(preTime)
+	preTime = now
 	currentGame = currentGame.Update(dt)
 
 	max := gtx.Constraints.Max

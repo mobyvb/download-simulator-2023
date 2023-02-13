@@ -135,3 +135,6 @@ Sun Feb 12 06:46:38 PM EST 2023> i'm giving up on the watch script for now
 Sun Feb 12 06:47:02 PM EST 2023> apparently just killing the go process is not enough. The UI still stays open, thwarting my efforts
 Sun Feb 12 06:47:09 PM EST 2023> so I'm just gonna get down to the game
 Sun Feb 12 07:41:00 PM EST 2023> got a player entity and can draw it. Now I need to figure out why the loop is not running
+Sun Feb 12 08:06:35 PM EST 2023> got the game loop workinig
+Sun Feb 12 08:06:47 PM EST 2023> next step is getting key presses so I can update based on user input
+Sun Feb 12 08:07:05 PM EST 2023> I think I'll do that tomorrow though. I made a decent amount of progress today
