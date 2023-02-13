@@ -131,3 +131,7 @@ Sun Feb 12 05:24:33 PM EST 2023> test
 Sun Feb 12 05:25:43 PM EST 2023> test
 Sun Feb 12 05:39:43 PM EST 2023> lol I totally just killed some important process on my computer by accident while writing the watch script
 Sun Feb 12 05:40:01 PM EST 2023> the screen went black and everything was closed. Like if I had just rebooted
+Sun Feb 12 06:46:38 PM EST 2023> i'm giving up on the watch script for now
+Sun Feb 12 06:47:02 PM EST 2023> apparently just killing the go process is not enough. The UI still stays open, thwarting my efforts
+Sun Feb 12 06:47:09 PM EST 2023> so I'm just gonna get down to the game
+Sun Feb 12 07:41:00 PM EST 2023> got a player entity and can draw it. Now I need to figure out why the loop is not running
