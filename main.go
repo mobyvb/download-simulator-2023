@@ -4,11 +4,9 @@ import (
 	"flag"
 	"image"
 	"image/color"
-	"time"
-
 	"log"
-
 	"os"
+	"time"
 
 	"gioui.org/app"
 	"gioui.org/font/gofont"
@@ -62,6 +60,10 @@ func (ui *UI) Run(w *app.Window) error {
 				return e.Err
 			case system.FrameEvent:
 				gtx := layout.NewContext(&ops, e)
+
+				// I guess thsi will result in re-calling frame
+				op.InvalidateOp{At: gtx.Now.Add(30 * time.Millisecond)}.Add(gtx.Ops)
+
 				ui.Layout(gtx)
 				e.Frame(gtx.Ops)
 			}
@@ -91,6 +93,7 @@ func (ui *UI) Canvas(gtx layout.Context) layout.Dimensions {
 	if !started {
 		currentGame = game.NewGame()
 		prevTime = gtx.Now
+		started = true
 	}
 	now := gtx.Now
 	dt := now.Sub(prevTime)
@@ -102,9 +105,9 @@ func (ui *UI) Canvas(gtx layout.Context) layout.Dimensions {
 	canvasWidth := max.X - 50
 	canvasHeight := canvasWidth / canvasWidthRatio * canvasHeightRatio
 	canvasBounds := image.Point{X: canvasWidth, Y: canvasHeight}
+
 	bounds := clip.Rect(image.Rectangle{Max: canvasBounds}).Push(gtx.Ops)
 	defer bounds.Pop()
-
 	red := color.NRGBA{R: 0xFF, A: 0xFF}
 	paint.ColorOp{Color: red}.Add(gtx.Ops)
 	paint.PaintOp{}.Add(gtx.Ops)
