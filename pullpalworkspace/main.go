@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -20,7 +21,19 @@ func main() {
 	}
 	player := Player{0, 0, 0, 0, true, false}
 
-	// TO-DO: Implement main game loop
+	// Create a function to simulate a game loop
+	gameLoop := time.Tick(time.Millisecond * 16)
 
-	// TO-DO: Implement player character controller
+	for range gameLoop {
+		updateGame(&player, gravity, momentum, jumpForce)
+		renderGame(player)
+	}
+}
+
+func updateGame(player *Player, gravity, momentum, jumpForce float32) {
+	// TO-DO: Implement game logic to update the state of the game
+}
+
+func renderGame(player Player) {
+	// TO-DO: Implement game rendering to display the current state of the game
 }
