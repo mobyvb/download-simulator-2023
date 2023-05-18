@@ -6,6 +6,11 @@ import (
 	"time"
 )
 
+type Player struct {
+	positionX, positionY, velocityX, velocityY float32
+	isOnGround, isJumping                      bool
+}
+
 func main() {
 	err := termbox.Init()
 	if err != nil {
@@ -21,11 +26,6 @@ func main() {
 	momentum = 0
 	jumpForce = 20
 
-	// Create player character
-	type Player struct {
-		positionX, positionY, velocityX, velocityY float32
-		isOnGround, isJumping                      bool
-	}
 	player := Player{0, 0, 0, 0, true, false}
 
 	// Set up player input
