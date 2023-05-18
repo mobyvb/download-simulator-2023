@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"image/color"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -20,7 +21,7 @@ func main() {
 	momentum = 0
 	jumpForce = 20
 
-	player := Player{0, 0, 0, 0, true, false}
+	player := Player{positionX: 320, positionY: 240, velocityX: 0, velocityY: 0, isOnGround: true, isJumping: false}
 
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Download Simulator 2D Platform Game")
@@ -33,13 +34,13 @@ func main() {
 }
 
 func (g *Game) playerInput() {
-	if ebiten.IsKeyPressed(ebiten.KeyLeft) || ebiten.IsKeyPressed(ebiten.KeyA) {
+	if ebiten.IsKeyPressed(ebiten.KeyA) {
 		g.player.velocityX -= 5
 	}
-	if ebiten.IsKeyPressed(ebiten.KeyRight) || ebiten.IsKeyPressed(ebiten.KeyD) {
+	if ebiten.IsKeyPressed(ebiten.KeyD) {
 		g.player.velocityX += 5
 	}
-	if ebiten.IsKeyPressed(ebiten.KeyUp) || ebiten.IsKeyPressed(ebiten.KeySpace) || ebiten.IsKeyPressed(ebiten.KeyW) {
+	if ebiten.IsKeyPressed(ebiten.KeyW) {
 		if g.player.isOnGround {
 			g.player.velocityY = -g.jumpForce
 			g.player.isOnGround = false
@@ -63,6 +64,9 @@ func (g *Game) Update() error {
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	// Draw game objects here
+	playerRect := image.Rect(int(g.player.positionX-10), int(g.player.positionY-10), int(g.player.positionX+10), int(g.player.positionY+10))
+	screen.Fill(color.White)
+	screen.DrawImage(ebiten.NewImageFromImage(playerRect), &ebiten.DrawImageOptions{})
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
