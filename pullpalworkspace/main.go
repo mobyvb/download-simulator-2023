@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/nsf/termbox-go"
+	"github.com/hajimehoshi/ebiten/v2"
 	"time"
 )
 
@@ -12,12 +12,6 @@ type Player struct {
 }
 
 func main() {
-	err := termbox.Init()
-	if err != nil {
-		panic(err)
-	}
-	defer termbox.Close()
-
 	fmt.Println("Welcome to Download Simulator 2D Platform Game!")
 
 	// Define core physics variables
@@ -28,36 +22,31 @@ func main() {
 
 	player := Player{0, 0, 0, 0, true, false}
 
-	// Set up player input
-	go func() {
-		for {
-			event := termbox.PollEvent()
-			if event.Type == termbox.EventKey {
-				playerInput(event.Key, &player, jumpForce)
-			}
-		}
-	}()
-
 	// Create a function to simulate a game loop
 	gameLoop := time.Tick(time.Millisecond * 16)
 
-	for range gameLoop {
-		updateGame(&player, gravity, momentum, jumpForce)
-		renderGame(player)
+	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowTitle("Download Simulator 2D Platform Game")
+
+	game := &Game{player: player, gravity: gravity, momentum: momentum, jumpForce: jumpForce}
+
+	if err := ebiten.RunGame(game); err != nil {
+		panic(err)
 	}
 }
 
-func playerInput(key termbox.Key, player *Player, jumpForce float32) {
-	switch key {
-	case termbox.KeyArrowLeft, termbox.KeyCtrlB:
-		player.velocityX -= 5
-	case termbox.KeyArrowRight, termbox.KeyCtrlF:
-		player.velocityX += 5
-	case termbox.KeyArrowUp, termbox.KeySpace, termbox.KeyCtrlP:
-		if player.isOnGround {
-			player.velocityY = -jumpForce
-			player.isOnGround = false
-			player.isJumping = true
+func (g *Game) playerInput() {
+	if ebiten.IsKeyPressed(ebiten.KeyLeft) || ebiten.IsKeyPressed(ebiten.KeyA) {
+		g.player.velocityX -= 5
+	}
+	if ebiten.IsKeyPressed(ebiten.KeyRight) || ebiten.IsKeyPressed(ebiten.KeyD) {
+		g.player.velocityX += 5
+	}
+	if ebiten.IsKeyPressed(ebiten.KeyUp) || ebiten.IsKeyPressed(ebiten.KeySpace) || ebiten.IsKeyPressed(ebiten.KeyW) {
+		if g.player.isOnGround {
+			g.player.velocityY = -g.jumpForce
+			g.player.isOnGround = false
+			g.player.isJumping = true
 		}
 	}
 }
