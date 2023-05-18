@@ -65,9 +65,12 @@ func (g *Game) Update() error {
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	// Draw game objects here
-	playerRect := image.Rect(int(g.player.positionX-10), int(g.player.positionY-10), int(g.player.positionX+10), int(g.player.positionY+10))
-	screen.Fill(color.White)
-	screen.DrawImage(ebiten.NewImageFromImage(playerRect), &ebiten.DrawImageOptions{})
+	playerRect := ebiten.NewImage(20, 20)
+	playerRect.Fill(color.RGBA{255, 0, 0, 255})
+	screen.Fill(color.RGBA{245, 245, 245, 255})
+	opts := &ebiten.DrawImageOptions{}
+	opts.GeoM.Translate(g.player.positionX-10, g.player.positionY-10)
+	screen.DrawImage(playerRect, opts)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
