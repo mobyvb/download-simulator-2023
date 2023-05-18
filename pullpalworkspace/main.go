@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -22,9 +21,6 @@ func main() {
 	jumpForce = 20
 
 	player := Player{0, 0, 0, 0, true, false}
-
-	// Create a function to simulate a game loop
-	gameLoop := time.Tick(time.Millisecond * 16)
 
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Download Simulator 2D Platform Game")
@@ -58,6 +54,7 @@ type Game struct {
 	momentum  float32
 	jumpForce float32
 }
+
 func (g *Game) Update() error {
 	// Update game logic here
 	g.playerInput()
