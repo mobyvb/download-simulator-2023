@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/hajimehoshi/ebiten/v2"
 	"time"
+
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type Player struct {
@@ -50,27 +51,9 @@ func (g *Game) playerInput() {
 		}
 	}
 }
-
-func updateGame(player *Player, gravity, momentum, jumpForce float32) {
-	// TO-DO: Implement game logic to update the state of the game
-}
-
-func renderGame(player Player) {
-	// Clear the screen
-	termbox.Clear(termbox.ColorDefault, termbox.ColorDefault)
-
-	// Draw the player character at its current position
-	drawPlayer(player)
-
-	// Draw the platforms and other game objects
-	// TODO: Implement platform and game object rendering
-
-	// Update the screen with the new drawings
-	termbox.Flush()
-}
-
-func drawPlayer(player Player) {
-	x := int(player.positionX)
-	y := int(player.positionY)
-	termbox.SetCell(x, y, '@', termbox.ColorWhite, termbox.ColorDefault)
+type Game struct {
+	player    Player
+	gravity   float32
+	momentum  float32
+	jumpForce float32
 }
