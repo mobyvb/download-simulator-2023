@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-	"image"
 	"image/color"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type Player struct {
-	positionX, positionY, velocityX, velocityY float32
+	positionX, positionY, velocityX, velocityY float64
 	isOnGround, isJumping                      bool
 }
 
@@ -17,7 +16,7 @@ func main() {
 	fmt.Println("Welcome to Download Simulator 2D Platform Game!")
 
 	// Define core physics variables
-	var gravity, momentum, jumpForce float32
+	var gravity, momentum, jumpForce float64
 	gravity = 9.81
 	momentum = 0
 	jumpForce = 20
@@ -52,9 +51,9 @@ func (g *Game) playerInput() {
 
 type Game struct {
 	player    Player
-	gravity   float32
-	momentum  float32
-	jumpForce float32
+	gravity   float64
+	momentum  float64
+	jumpForce float64
 }
 
 func (g *Game) Update() error {
