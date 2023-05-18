@@ -59,6 +59,26 @@ type Game struct {
 func (g *Game) Update() error {
 	// Update game logic here
 	g.playerInput()
+
+	// Apply gravity
+	g.player.velocityY += g.gravity * ebiten.CurrentTPS()
+
+	// Apply momentum
+	g.player.velocityX *= g.momentum
+
+	// Update player position
+	g.player.positionX += g.player.velocityX / ebiten.CurrentTPS()
+	g.player.positionY += g.player.velocityY / ebiten.CurrentTPS()
+
+	// Check for collisions and adjust player position
+	// For now, we'll assume the ground is at positionY = 400
+	if g.player.positionY > 400 {
+		g.player.positionY = 400
+		g.player.isOnGround = true
+		g.player.isJumping = false
+		g.player.velocityY = 0
+	}
+
 	return nil
 }
 
