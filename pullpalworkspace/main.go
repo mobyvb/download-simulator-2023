@@ -18,7 +18,7 @@ func main() {
 	// Define core physics variables
 	var gravity, momentum, jumpForce float64
 	gravity = 9.81
-	momentum = 0
+	momentum = 0.9
 	jumpForce = 20
 
 	player := Player{positionX: 320, positionY: 200, velocityX: 0, velocityY: 0, isOnGround: true, isJumping: false}
