@@ -51,6 +51,7 @@ func (g *Game) playerInput() {
 		}
 	}
 }
+
 type Game struct {
 	player    Player
 	gravity   float32
