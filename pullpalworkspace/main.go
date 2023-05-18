@@ -67,5 +67,8 @@ func updateGame(player *Player, gravity, momentum, jumpForce float32) {
 }
 
 func renderGame(player Player) {
-	// TO-DO: Implement game rendering to display the current state of the game
+	// TODO: Clear the screen
+	// TODO: Draw the player character at its current position
+	// TODO: Draw the platforms and other game objects
+	// TODO: Update the screen with the new drawings
 }
