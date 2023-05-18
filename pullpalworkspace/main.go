@@ -67,8 +67,21 @@ func updateGame(player *Player, gravity, momentum, jumpForce float32) {
 }
 
 func renderGame(player Player) {
-	// TODO: Clear the screen
-	// TODO: Draw the player character at its current position
-	// TODO: Draw the platforms and other game objects
-	// TODO: Update the screen with the new drawings
+	// Clear the screen
+	termbox.Clear(termbox.ColorDefault, termbox.ColorDefault)
+
+	// Draw the player character at its current position
+	drawPlayer(player)
+
+	// Draw the platforms and other game objects
+	// TODO: Implement platform and game object rendering
+
+	// Update the screen with the new drawings
+	termbox.Flush()
+}
+
+func drawPlayer(player Player) {
+	x := int(player.positionX)
+	y := int(player.positionY)
+	termbox.SetCell(x, y, '@', termbox.ColorWhite, termbox.ColorDefault)
 }
