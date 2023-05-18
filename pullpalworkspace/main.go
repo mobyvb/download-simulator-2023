@@ -58,3 +58,16 @@ type Game struct {
 	momentum  float32
 	jumpForce float32
 }
+func (g *Game) Update() error {
+	// Update game logic here
+	g.playerInput()
+	return nil
+}
+
+func (g *Game) Draw(screen *ebiten.Image) {
+	// Draw game objects here
+}
+
+func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
+	return 640, 480
+}
