@@ -96,7 +96,7 @@ func (ui *UI) Run(w *app.Window) error {
 				gtx := layout.NewContext(&ops, e)
 
 				// I guess thsi will result in re-calling frame
-				op.InvalidateOp{At: gtx.Now.Add(30 * time.Millisecond)}.Add(gtx.Ops)
+				op.InvalidateOp{}.Add(gtx.Ops)
 
 				ui.Layout(gtx)
 				e.Frame(gtx.Ops)
@@ -126,6 +126,15 @@ func (ui *UI) Canvas(gtx layout.Context) layout.Dimensions {
 	now := gtx.Now
 	dt := now.Sub(preTime)
 	preTime = now
+	// TODO handle case where dt is very large
+	// e.g.
+	/*
+		const stepTime = 30 * time.Millisecond
+		for ; dt > 0; dt -= stepTime {
+			game.Update(dt)
+		}
+	*/
+	// or just run one time (if focus has changed)
 	currentGame = currentGame.Update(dt)
 
 	max := gtx.Constraints.Max
@@ -136,8 +145,8 @@ func (ui *UI) Canvas(gtx layout.Context) layout.Dimensions {
 
 	bounds := clip.Rect(image.Rectangle{Max: canvasBounds}).Push(gtx.Ops)
 	defer bounds.Pop()
-	red := color.NRGBA{R: 0xFF, A: 0xFF}
-	paint.ColorOp{Color: red}.Add(gtx.Ops)
+	bg := color.NRGBA{B: 0xDD, R: 0xFF, A: 0xFF}
+	paint.ColorOp{Color: bg}.Add(gtx.Ops)
 	paint.PaintOp{}.Add(gtx.Ops)
 
 	currentGame.Draw(gtx, canvasWidth)
