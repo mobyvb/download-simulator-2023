@@ -21,7 +21,7 @@ func main() {
 	momentum = 0
 	jumpForce = 20
 
-	player := Player{positionX: 320, positionY: 240, velocityX: 0, velocityY: 0, isOnGround: true, isJumping: false}
+	player := Player{positionX: 320, positionY: 200, velocityX: 0, velocityY: 0, isOnGround: true, isJumping: false}
 
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Download Simulator 2D Platform Game")
